@@ -1,0 +1,21 @@
+<hr>
+
+
+<h3>Choose the car to get back</h3>
+
+<div>
+  <select [(ngModel)]="selectedCar" required>
+    <option *ngFor="let car of cars" [ngValue]="car">
+      <div *ngIf="car.rented == false">
+        {{car.model}}
+      </div>
+    </option>
+  </select>
+</div>
+
+<div *ngIf="selectedCar">
+  <h2>Plate number of the selected car: {{selectedCar.plateNumber | uppercase}}
+  </h2>
+  <button (click)="goBack()">Get Back</button>
+  <button (click)="goBack()">Return to the main menu</button>
+</div>
