@@ -1,6 +1,4 @@
-# Launch the Rest web service
-
-https://github.com/charroux/CorrectionWebServiceJPA
+# Need a web service for run this application
 
 # CarRental
 
