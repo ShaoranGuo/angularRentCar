@@ -1,6 +1,23 @@
 <hr>
 
 <h3>Part of the screen displayed by default or when "Rent a car" is selected</h3>
+<form [formGroup]="rForm" (ngSubmit) = "addCar()">
+  <div class="form-container">
+    <div class="row columns">
+      <h2>Add new car</h2>
+      <label>Plate Number
+        <input type="text" formControlName="plateNumber">
+      </label>
+      <label>Brand
+        <input type="text" formControlName="brand">
+      </label>
+      <label>Price
+        <input type="text" formControlName="price">
+      </label>
+      <button type="submit">Submit Form</button>
+    </div>
+  </div>
+</form>
 
 <h2>Select a car:</h2>
 

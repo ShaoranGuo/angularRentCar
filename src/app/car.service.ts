@@ -1,11 +1,15 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
 
 import {Car} from './car';
 import {CARS} from './mock-cars';
+
+const httpOptions = {
+  headers: new HttpHeaders({'Content-Type': 'application/json'})
+};
 
 @Injectable()
 export class CarService {
@@ -24,8 +28,10 @@ export class CarService {
     return this.http.get('http://localhost:8080/cars').map((response: Response) => response || []);
   }
 
-  public addCar(car: Car): Observable<Car[]> {
-    return this.http.post('http://localhost:8080/cars', car).map((response: Response) => response || []);
+  addCar(car): Observable<Car> {
+    return this.http.post<Car>('http://localhost:8080/cars', car, httpOptions)      .catch((err) => {
+      return Observable.throw(err);
+    });
   }
 
   getCar(plateNumber: string): Promise<Car> {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Car } from './car';
 import { CarService } from './car.service';
@@ -15,8 +15,11 @@ export class CarsComponent implements OnInit {
   title = 'Car Rental';
   cars: Car[];
   selectedCar: Car;
+  car: Car;
+  rForm: FormGroup;
 
   constructor(
+    private fb: FormBuilder,
     private carService: CarService,
     private router: Router) { }
 
@@ -30,7 +33,17 @@ export class CarsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.rForm = this.fb.group({
+      'plateNumber' : [null, Validators.required],
+      'brand' : [null, Validators.required],
+      'price' : [null, Validators.required]
+    });
     this.getCars();
+  }
+
+  addCar() {
+    console.log(this.rForm.value);
+    this.carService.addCar(this.rForm.value).subscribe(car => {this.car = car; this.getCars(); });
   }
 
   onSelect(car: Car): void {
