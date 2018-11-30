@@ -6,8 +6,8 @@
 <div>
   <select [(ngModel)]="selectedCar" required>
     <option *ngFor="let car of cars" [ngValue]="car">
-      <div *ngIf="car.rented == false">
-        {{car.model}}
+      <div *ngIf="car.rented == true">
+        {{car.brand}}
       </div>
     </option>
   </select>
@@ -16,6 +16,6 @@
 <div *ngIf="selectedCar">
   <h2>Plate number of the selected car: {{selectedCar.plateNumber | uppercase}}
   </h2>
-  <button (click)="goBack()">Get Back</button>
+  <button (click)="cancelRental()">Get Back</button>
   <button (click)="goBack()">Return to the main menu</button>
 </div>

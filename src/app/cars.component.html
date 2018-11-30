@@ -8,7 +8,7 @@
 
 <ul class="cars">
   <li *ngFor="let car of cars" (click)="onSelect(car)">
-  	{{car.plateNumber}}: {{car.model}}: {{car.price}} euros/day
+  	{{car.plateNumber}}: {{car.brand}}: {{car.price}} euros/day
   	<div *ngIf="car.rented == false">
   		TO BE RENTED
   	</div>
@@ -24,14 +24,14 @@
 	<select [(ngModel)]="selectedCar" required> 
     	<option *ngFor="let car of cars" [ngValue]="car">
     		<div *ngIf="car.rented == false">
-    			{{car.model}}
+    			{{car.brand}}
     		</div>    	
     	</option>
   	</select>
 </div>
 
 <div *ngIf="selectedCar">
-  <h2>Selected car: {{selectedCar.model | uppercase}}
+  <h2>Selected car: {{selectedCar.brand | uppercase}}
   </h2>
   <button (click)="gotoDetail()">Choose my rental options</button>
 </div>

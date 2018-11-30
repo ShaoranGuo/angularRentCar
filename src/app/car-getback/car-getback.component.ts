@@ -22,16 +22,20 @@ export class CarGetbackComponent implements OnInit {
   }
 
   getCars(): void {
-    this.carService.getCarsWithPromise().then(cars => this.cars = cars);
-    /*this.carService.getCarsWithObservable().subscribe(
+    // this.carService.getCarsWithPromise().then(cars => this.cars = cars);
+    this.carService.getCarsWithObservable().subscribe(
        res => {
            this.cars = res;
        }
-    ); */
+    );
   }
 
   ngOnInit() {
     this.getCars();
+  }
+
+  cancelRental(): void {
+    this.carService.getBack(this.selectedCar).subscribe(car => this.selectedCar = car);
   }
 
   onSelect(car: Car): void {

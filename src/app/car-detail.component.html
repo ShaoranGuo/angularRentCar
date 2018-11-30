@@ -1,8 +1,8 @@
 <hr>
 <div *ngIf="car">
-  <h2>Rental options for {{car.model}}</h2>
+  <h2>Rental options for {{car.brand}}</h2>
   <ul>
-  	<li>model: {{car.model}}</li>
+  	<li>model: {{car.brand}}</li>
   	<li>price/day: {{car.price}} euros</li>
   	<li>plate number: {{car.plateNumber}}</li>
   	<li>Choose the number of rental days: <input type="number" required min="1" [(ngModel)]="car.numberOfDays" /></li>

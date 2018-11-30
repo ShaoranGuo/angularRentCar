@@ -24,6 +24,10 @@ export class CarService {
     return this.http.get('http://localhost:8080/cars').map((response: Response) => response || []);
   }
 
+  public addCar(car: Car): Observable<Car[]> {
+    return this.http.post('http://localhost:8080/cars', car).map((response: Response) => response || []);
+  }
+
   getCar(plateNumber: string): Promise<Car> {
     console.log(Promise.resolve(CARS));
     return Promise.resolve(CARS.find(car => car.plateNumber === plateNumber));
